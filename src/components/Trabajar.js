@@ -1,28 +1,19 @@
 import {
-  Avatar,
+  
   Button,
-  Link,
+ 
   List,
   ListItem,
-  ListItemAvatar,
+ 
   ListItemIcon,
   ListItemText,
   Typography,
 } from "@material-ui/core";
-import FolderIcon from "@material-ui/icons/Folder";
 import React from "react";
 import WorkIcon from "@material-ui/icons/Work";
-import { Redirect } from "react-router";
 import { useHistory } from "react-router-dom";
 
 function Trabajar() {
-  function generate(element) {
-    return [0, 1, 2].map((value) =>
-      React.cloneElement(element, {
-        key: value,
-      })
-    );
-  }
   let history = useHistory();
 const goto = ()=> ( history.push('/conozca') )
   return (
