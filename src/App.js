@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header";
+import Navigation from "./components/Navigation";
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import Conozca from "./components/Conozca";
+import { Container, makeStyles } from "@material-ui/core";
+import BreadcrumbCustom from "./components/BreadcrumbCustom";
+import Trabajar from "./components/Trabajar";
+import MobileMenu from "./components/MobileMenu";
 
 function App() {
+  const useStyles = makeStyles((theme) => ({
+    heroContent: {
+      padding: theme.spacing(8, 0, 6),
+      "& img": {
+        maxWidth: "100%",
+      },
+    },
+  }));
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header></Header>
+      <main>
+        <Container maxWidth="md" className={classes.heroContent}>
+          <MobileMenu></MobileMenu>
+          <Navigation></Navigation>
+          <BreadcrumbCustom></BreadcrumbCustom>
+          <Route path="/conozca" component={Conozca} />
+          <Route path="/trabajar" component={Trabajar} />
+        </Container>
+      </main>
+    </Router>
   );
 }
 
