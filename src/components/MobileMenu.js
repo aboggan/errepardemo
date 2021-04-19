@@ -103,7 +103,7 @@ export default function MobileMenu() {
             >
               <Toolbar>
                 <Typography variant="h6" noWrap className={classes.title}>
-                  Persistent drawer
+                  Errepar
                 </Typography>
                 <IconButton
                   color="inherit"

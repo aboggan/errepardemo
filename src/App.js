@@ -20,10 +20,13 @@ function App() {
   const classes = useStyles();
   return (
     <Router>
-      <Header></Header>
+      <header>
+        <Header></Header>
+        <MobileMenu></MobileMenu>
+
+      </header>
       <main>
         <Container maxWidth="md" className={classes.heroContent}>
-          <MobileMenu></MobileMenu>
           <Navigation></Navigation>
           <BreadcrumbCustom></BreadcrumbCustom>
           <Route path="/conozca" component={Conozca} />
