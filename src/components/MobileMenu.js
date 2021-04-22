@@ -131,10 +131,13 @@ export default function MobileMenu() {
                 paper: classes.drawerPaper,
               }}
             >
+                
               <div className={classes.drawerHeader}>
                 <IconButton onClick={handleDrawerClose}>
+                    
                   {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
+                
               </div>
               <Divider />
               <List>

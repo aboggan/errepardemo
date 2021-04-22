@@ -7,6 +7,9 @@ import { Container, makeStyles } from "@material-ui/core";
 import BreadcrumbCustom from "./components/BreadcrumbCustom";
 import Trabajar from "./components/Trabajar";
 import MobileMenu from "./components/MobileMenu";
+import TextEditor from "./components/TextEditor";
+import Footer from "./components/Footer";
+import CalculadoraInflacionContable from "./components/CalculadoraInflacionContable";
 
 function App() {
   const useStyles = makeStyles((theme) => ({
@@ -26,13 +29,18 @@ function App() {
 
       </header>
       <main>
-        <Container maxWidth="md" className={classes.heroContent}>
+        <Container maxWidth="md" className={classes.heroContent} height="100%">
           <Navigation></Navigation>
           <BreadcrumbCustom></BreadcrumbCustom>
+          
+          <Route path="/" exact component={TextEditor}/>
           <Route path="/conozca" component={Conozca} />
           <Route path="/trabajar" component={Trabajar} />
+          <Route path="/calculadora" component={CalculadoraInflacionContable} />
+          
         </Container>
       </main>
+      <Footer></Footer>
     </Router>
   );
 }

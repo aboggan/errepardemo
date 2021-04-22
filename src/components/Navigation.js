@@ -22,7 +22,7 @@ function Navigation() {
 
   const searchItem = async () => {
     setLoading(true);
-    const fetchItem = await fetch(`https://servermultiuso.vercel.app/api/hello`);
+    const fetchItem = await fetch(`/api/hello`);
     const item = await fetchItem.json();
     setMenuValues(item);
     setLoading(false);
@@ -37,16 +37,13 @@ function Navigation() {
   };
 
   const useStyles = makeStyles((theme) => ({
-    heroContent: {
-      padding: theme.spacing(8, 0, 6),
-      "& img": {
-        maxWidth: "100%",
-      },
+    container: {
+      marginBottom: "35px", 
     },
     buttonText: {
-      marginLeft: "15px",
       "& button": {
         fontSize: "15px",
+        minWidth: "170px"
       },
     },
   }));
@@ -71,6 +68,8 @@ function Navigation() {
           id={`menu-${menuValue.id}`}
           aria-controls={`menu-control-${menuValue.id}`}
           aria-haspopup="true"
+          disableFocusRipple= "true"
+          disableElevation
           onClick={handleClick}
         >
           {menuValue.name}
@@ -109,12 +108,14 @@ function Navigation() {
 
   return (
     <Hidden mdDown="true">
-        <Grid container>
+        <Grid container className={classes.container}>
           <Grid item md={2}>
-            <img
-              src="https://www.errepar.com/images/logosmarcas/logoerrepar.png?v=1"
-              alt=""
-            />
+            <Link href="/">
+              <img
+                src="https://www.errepar.com/images/logosmarcas/logoerrepar.png?v=1"
+                alt=""
+              />
+            </Link>
           </Grid>
           <Grid item md={8}>
             {names}
