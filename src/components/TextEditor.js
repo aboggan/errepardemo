@@ -1,8 +1,7 @@
 import { Button, CircularProgress, Hidden, LinearProgress, makeStyles, Typography } from "@material-ui/core";
+import { convertToRaw } from "draft-js";
 import MUIRichTextEditor from "mui-rte";
-import { react, useEffect, useState } from "react";
-import { convertToRaw, EditorState } from "draft-js";
-import axios from "axios";
+import { useEffect, useState } from "react";
 
 function TextEditor() {
   const [loading, setLoading] = useState(true);
