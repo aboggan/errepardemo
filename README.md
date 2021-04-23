@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Errepar web app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Boilerplate created with [create-react-app](https://github.com/facebook/create-react-app) and [material ui](https://material-ui.com/).
+The main propuse is simplify and agilize components creation.
+Material UI provides a large amount of out-of-the-box tools which with a little of customization we can adapt to our needs.
 
-## Available Scripts
+For example colors, using themes, we can change all the instances of color "primary" and "secondary" in the whole application. 
 
-In the project directory, you can run:
+![enter image description here](https://lh3.googleusercontent.com/IzfXNXxh36r2MhHVw_rPkJ8FVHxFyllX89ggGMQLt2wOPSZfxjiKtZikCblsMunKnDgTZ_Oshk-aOX9mnAKX=w1360-h654)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[NodeJs](https://nodejs.org/) (lastest version) is required. 
+After download, open a terminal in root localation a execute the following command:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    npm install
 
-### `npm test`
+Once finished:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    npm start
+  A new window should be open in [http://localhost:3000/](http://localhost:3000/)
 
-### `npm run build`
+## Components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+All the components are based in [material ui](https://material-ui.com/) components.  
+You can use api documentation from there in order to check properties and basic examples. 
+#### BreadcrumbCustom
+Implementation using [Breacrumbs](https://material-ui.com/components/breadcrumbs/) component. 
+Include anywhere. Will display location tree with link(s) to the parent(s) page(s).
+By default is hidden in home page *(href = "/")*.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Navigation (desktop menu)
+Using [ButtonGroup](https://material-ui.com/components/button-group/) and [Menu](https://material-ui.com/components/menus/#menus) components. 
+Dynamic menu display, recevies a json with the format
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    topLevel: [
+	           {
+		      name:  String,
+		      id:  Number,
+		      children: [
+				 {
+				   name:  String,
+				   id:  Number,
+				   link:  String,
+				  },
+				 ...
+				 ]
+		     },
+		     ...
+		   ]
 
-### `npm run eject`
+#### MobileMenu
+This a straight out-of-the-box implementation of [drawer](https://material-ui.com/components/drawers/#drawer) component (persistent option).
+Has a [Hidden](https://material-ui.com/components/hidden/#hidden) component wrapping all the content, in order to no overlap with Navigation. 
+If lower to 'md' (medium devices: >768px width) will be displayed. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### TextEditor
+This component has a couple of libraries. Is an implementation of [mui-rte](https://github.com/niuware/mui-rte) (Material UI Rich Text Editor). 
+Who itself is an implementation of [DraftJs](https://draftjs.org/).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For some options like disable toolbar, will come from mui-rte and others like get editor content on demand, will come from draftjs.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Sandbox: https://codesandbox.io/s/mui-rte-basic-ypfdo?fontsize=14
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The editor content is storaged as a plain text json when saved. So it can be persisted in database as "text" type. 
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Basic usage, click on edit button, write your text, click on save button on toolbar or button below to save.
