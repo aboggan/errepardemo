@@ -6,7 +6,7 @@ Material UI provides a large amount of out-of-the-box tools which with a little 
 
 For example colors, using themes, we can change all the instances of color "primary" and "secondary" in the whole application. 
 
-![enter image description here](https://lh3.googleusercontent.com/IzfXNXxh36r2MhHVw_rPkJ8FVHxFyllX89ggGMQLt2wOPSZfxjiKtZikCblsMunKnDgTZ_Oshk-aOX9mnAKX=w1360-h654)
+![theme colors](https://i.imgur.com/mNkYH8A.jpg)
 
 ## Installation
 
