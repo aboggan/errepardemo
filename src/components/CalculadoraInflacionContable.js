@@ -96,19 +96,7 @@ function CalculadoraInflacionContable() {
               Origen
             </Typography>
           </Grid>
-          <Grid item xs={2}>
-            <TextField
-              id="outlined-basic"
-              label="Día"
-              variant="outlined"
-              type="tel"
-              maxLength={2}
-              inputProps={{
-                maxLength: 2,
-              }}
-            />
-          </Grid>
-          <Grid item xs={5} >
+          <Grid item xs={7} >
             <FormControl variant="outlined" fullWidth={true}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Mes
@@ -163,19 +151,7 @@ function CalculadoraInflacionContable() {
               Destino
             </Typography>
           </Grid>
-          <Grid item xs={2}>
-            <TextField
-              id="outlined-basic"
-              label="Día"
-              variant="outlined"
-              type="tel"
-              maxLength={2}
-              inputProps={{
-                maxLength: 2,
-              }}
-            />
-          </Grid>
-          <Grid item xs={5} >
+          <Grid item xs={7} >
             <FormControl variant="outlined" fullWidth={true}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Mes
