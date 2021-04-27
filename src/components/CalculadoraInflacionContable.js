@@ -1,7 +1,7 @@
-import DateFnsUtils from "@date-io/date-fns";
 import {
   Button,
   Container,
+  Divider,
   FormControl,
   Grid,
   InputLabel,
@@ -10,17 +10,12 @@ import {
   Paper,
   Select,
   TextField,
-  Typography,
+  Typography
 } from "@material-ui/core";
-import {
-  KeyboardDatePicker,
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
 import React from "react";
 
 function CalculadoraInflacionContable() {
   const [juris, setJuris] = React.useState("");
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -52,9 +47,6 @@ function CalculadoraInflacionContable() {
   }));
   const classes = useStyles();
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
   const handleChange = (event) => {
     setJuris(event.target.value);
   };
@@ -69,8 +61,8 @@ function CalculadoraInflacionContable() {
         <Typography variant="h6" color="primary">
           Calculadora ajuste por inflación contable
         </Typography>
-        <Grid container justify="space-around">
-          <Grid item xs={12} md={4}>
+        <Grid container justify="space-around" paddingLeft={0} md={6}>
+          <Grid item xs={12} md={12}>
             <FormControl className={classes.formControl} fullWidth={true}>
               <InputLabel id="demo-simple-select-label">
                 Seleccione la juridicción
@@ -87,58 +79,157 @@ function CalculadoraInflacionContable() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={12}>
             <FormControl className={classes.formControl} fullWidth={true}>
               <TextField
                 id="standard-password-input"
                 label="$ Ingrese importe"
-                type="number"
+                type="tel"
                 autoComplete="current-password"
               />
             </FormControl>
           </Grid>
         </Grid>
-        <Grid container justify="space-around" className={classes.resultGrid}>
-          <Grid item xs={12} md={4}>
-            <FormControl className={classes.formControl} fullWidth={true}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  margin="normal"
-                  id="date-picker-dialog"
-                  label="Origen"
-                  format="dd/MM/yyyy"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date",
-                  }}
-                />
-                <Typography variant="subtitle2">
-                  IPC Nacional empalmado con el IPIM: 385,8826
-                </Typography>
-              </MuiPickersUtilsProvider>
+        <Grid container justify="space-between" md={6}>
+          <Grid item xs={12}>
+            <Typography variant="body1" gutterBottom={true}>
+              Origen
+            </Typography>
+          </Grid>
+          <Grid item xs={2}>
+            <TextField
+              id="outlined-basic"
+              label="Día"
+              variant="outlined"
+              type="tel"
+              maxLength={2}
+              inputProps={{
+                maxLength: 2,
+              }}
+            />
+          </Grid>
+          <Grid item xs={5} >
+            <FormControl variant="outlined" fullWidth={true}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Mes
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={1}
+                onChange={handleChange}
+                label="Mes"
+              >
+                <MenuItem value={1}>Enero</MenuItem>
+                <MenuItem value={2}>Febrero</MenuItem>
+                <MenuItem value={3}>Marzo</MenuItem>
+                <MenuItem value={4}>Abril</MenuItem>
+                <MenuItem value={5}>Mayo</MenuItem>
+                <MenuItem value={6}>Junio</MenuItem>
+                <MenuItem value={7}>Julio</MenuItem>
+                <MenuItem value={8}>Agosto</MenuItem>
+                <MenuItem value={9}>Septiembre</MenuItem>
+                <MenuItem value={10}>Octubre</MenuItem>
+                <MenuItem value={11}>Noviembre</MenuItem>
+                <MenuItem value={12}>Diciembre</MenuItem>
+              </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl className={classes.formControl} fullWidth={true}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  margin="normal"
-                  id="date-picker-dialog"
-                  label="Destino"
-                  format="dd/MM/yyyy"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date",
-                  }}
-                />
-                <Typography variant="subtitle2">
-                  IPC Nacional empalmado con el IPIM: 7,4671
-                </Typography>
-              </MuiPickersUtilsProvider>
+          <Grid item xs={4} >
+            <TextField
+              id="outlined-basic"
+              label="Año"
+              variant="outlined"
+              type="tel"
+              inputProps={{
+                maxLength: 4,
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} gutterBottom={true}>
+            <Typography variant="subtitle2" gutterBottom={true}>
+              IPC Nacional empalmado con el IPIM: 385,8826
+            </Typography>
+          </Grid>
+
+
+
+
+
+
+          <Grid item xs={12}>
+            <Typography variant="body1" gutterBottom={true}>
+              Destino
+            </Typography>
+          </Grid>
+          <Grid item xs={2}>
+            <TextField
+              id="outlined-basic"
+              label="Día"
+              variant="outlined"
+              type="tel"
+              maxLength={2}
+              inputProps={{
+                maxLength: 2,
+              }}
+            />
+          </Grid>
+          <Grid item xs={5} >
+            <FormControl variant="outlined" fullWidth={true}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Mes
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={1}
+                onChange={handleChange}
+                label="Mes"
+              >
+                <MenuItem value={1}>Enero</MenuItem>
+                <MenuItem value={2}>Febrero</MenuItem>
+                <MenuItem value={3}>Marzo</MenuItem>
+                <MenuItem value={4}>Abril</MenuItem>
+                <MenuItem value={5}>Mayo</MenuItem>
+                <MenuItem value={6}>Junio</MenuItem>
+                <MenuItem value={7}>Julio</MenuItem>
+                <MenuItem value={8}>Agosto</MenuItem>
+                <MenuItem value={9}>Septiembre</MenuItem>
+                <MenuItem value={10}>Octubre</MenuItem>
+                <MenuItem value={11}>Noviembre</MenuItem>
+                <MenuItem value={12}>Diciembre</MenuItem>
+              </Select>
             </FormControl>
           </Grid>
+          <Grid item xs={4} >
+            <TextField
+              id="outlined-basic"
+              label="Año"
+              variant="outlined"
+              type="tel"
+              inputProps={{
+                maxLength: 4,
+              }}
+            />
+          </Grid>
+
+
+
+
+
+
+
+
+          <Grid item xs={12} gutterBottom={true}>
+            <Typography variant="subtitle2" gutterBottom={true}>
+              IPC Nacional empalmado con el IPIM: 385,8826
+            </Typography>
+          </Grid>
+
+
+
+
           <Grid item xs={12}>
             <Button
               variant="contained"
@@ -178,6 +269,7 @@ function CalculadoraInflacionContable() {
               </Grid>
             </Paper>
           </Grid>
+          <Divider />
           <Grid item xs={12} md={6}>
             <Button variant="contained" color="primary">
               nuevo cálculo
