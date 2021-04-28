@@ -16,10 +16,12 @@ import React from "react";
 
 function CalculadoraInflacionContable() {
   const [juris, setJuris] = React.useState("");
+  const [mesOrigen, setMesOrigen] = React.useState(1);
+  const [mesDestino, setMesDestino] = React.useState(1);
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
-      margin: theme.spacing(1),
+      marginBottom: theme.spacing(4),
       minWidth: 120,
     },
     select: {
@@ -33,6 +35,7 @@ function CalculadoraInflacionContable() {
     },
     resultado: {
       marginTop: 20,
+      marginBottom: 20,
       paddingTop: 20,
       paddingBottom: 20,
       paddingLeft: 15,
@@ -43,6 +46,14 @@ function CalculadoraInflacionContable() {
       "& button": {
         margin: "15px 0",
       },
+    },
+    calcularBtn: {
+      marginTop: theme.spacing(5),
+      marginBottom: theme.spacing(2)
+    },
+    fechaLabel: {
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2)
     },
   }));
   const classes = useStyles();
@@ -55,10 +66,18 @@ function CalculadoraInflacionContable() {
     console.log(event);
   };
 
+  const handleMesOrigen = (event) => {
+    setMesOrigen(event.target.value)
+  }
+
+  const constHandleMesDestino = (event) => {
+    setMesDestino(event.target.value)
+  }
+
   return (
     <Container>
       <form noValidate autoComplete="off">
-        <Typography variant="h6" color="primary">
+        <Typography variant="h5" color="primary" gutterBottom={true}>
           Calculadora ajuste por inflación contable
         </Typography>
         <Grid container justify="space-around" paddingLeft={0} md={6}>
@@ -92,7 +111,7 @@ function CalculadoraInflacionContable() {
         </Grid>
         <Grid container justify="space-between" md={6}>
           <Grid item xs={12}>
-            <Typography variant="body1" gutterBottom={true}>
+            <Typography variant="body1" gutterBottom={true} className={classes.fechaLabel}>
               Origen
             </Typography>
           </Grid>
@@ -104,8 +123,8 @@ function CalculadoraInflacionContable() {
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                value={1}
-                onChange={handleChange}
+                value={mesOrigen}
+                onChange={handleMesOrigen}
                 label="Mes"
               >
                 <MenuItem value={1}>Enero</MenuItem>
@@ -147,7 +166,7 @@ function CalculadoraInflacionContable() {
 
 
           <Grid item xs={12}>
-            <Typography variant="body1" gutterBottom={true}>
+            <Typography variant="body1" gutterBottom={true} className={classes.fechaLabel}>
               Destino
             </Typography>
           </Grid>
@@ -159,8 +178,8 @@ function CalculadoraInflacionContable() {
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                value={1}
-                onChange={handleChange}
+                value={mesDestino}
+                onChange={constHandleMesDestino}
                 label="Mes"
               >
                 <MenuItem value={1}>Enero</MenuItem>
@@ -211,6 +230,8 @@ function CalculadoraInflacionContable() {
               variant="contained"
               color="primary"
               onClick={handleCalcular}
+              fullWidth={true}
+              className={classes.calcularBtn}
             >
               calcular
             </Button>
@@ -245,14 +266,18 @@ function CalculadoraInflacionContable() {
               </Grid>
             </Paper>
           </Grid>
-          <Divider />
-          <Grid item xs={12} md={6}>
-            <Button variant="contained" color="primary">
+          
+          <Grid item xs={12}>
+          <Divider variant="middle" />
+            <Button variant="outlined" color="primary" fullWidth={true}>
               nuevo cálculo
             </Button>
+            
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Button variant="contained" color="primary">
+          
+          <Grid item xs={12}>
+          <Divider variant="middle" />
+            <Button variant="text" color="primary" fullWidth={true}>
               historial de cálculos
             </Button>
           </Grid>
