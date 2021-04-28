@@ -28,7 +28,7 @@ function TextEditor() {
 
   const searchItem = async () => {
     setLoading(true);
-    const url = `https://next-mysql-olive.vercel.app//api/get-entry?id=3`;
+    const url = `/api/get-entry?id=3`;
     const fetchItem = await fetch(url);
     const item = await fetchItem.json();
     setContent(item.content);
@@ -48,7 +48,7 @@ function TextEditor() {
   const saveContent = async () => {
     // const contentbody = JSON.stringify(content2)
     setSubmitting(true);
-    const url = "https://next-mysql-olive.vercel.app/api/edit-entry";
+    const url = "/api/edit-entry";
     const body = { id: 3, title: "app", content: content2 };
 
     const myHeaders = new Headers();
