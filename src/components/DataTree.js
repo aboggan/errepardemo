@@ -15,7 +15,7 @@ function DataTree() {
 
   const searchItem = async () => {
     setLoading(true);
-    const fetchItem = await fetch(`/api/dataTree`);
+    const fetchItem = await fetch(`https://next-mysql-olive.vercel.app/api/dataTree`);
     const item = await fetchItem.json();
     setDataTree(item);
     setLoading(false);
