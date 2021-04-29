@@ -10,17 +10,19 @@ function DataTree() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    searchItem();
+    
+    const searchItem = async () => {
+        setLoading(true);
+        const fetchItem = await fetch(`/api/dataTree`);
+        const item = await fetchItem.json();
+        setDataTree(item);
+        setLoading(false);
+        console.log(dataTree);
+      };
+      searchItem();
   }, []);
 
-  const searchItem = async () => {
-    setLoading(true);
-    const fetchItem = await fetch(`/api/dataTree`);
-    const item = await fetchItem.json();
-    setDataTree(item);
-    setLoading(false);
-    console.log(dataTree);
-  };
+  
 
 
   const MenuItem = ({ item }) => {
