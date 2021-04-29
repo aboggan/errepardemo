@@ -10,6 +10,8 @@ import MobileMenu from "./components/MobileMenu";
 import TextEditor from "./components/TextEditor";
 import Footer from "./components/Footer";
 import CalculadoraInflacionContable from "./components/CalculadoraInflacionContable";
+import SimpleSelect from "./components/InputsDemo";
+import DataTree from "./components/DataTree";
 
 function App() {
   const useStyles = makeStyles((theme) => ({
@@ -37,6 +39,8 @@ function App() {
           <Route path="/conozca" component={Conozca} />
           <Route path="/trabajar" component={Trabajar} />
           <Route path="/calculadora" component={CalculadoraInflacionContable} />
+          <Route path="/inputsdemo" component={SimpleSelect} />
+          <Route path="/dataTree" component={DataTree} />
           
         </Container>
       </main>
