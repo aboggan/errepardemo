@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import CalculadoraInflacionContable from "./components/CalculadoraInflacionContable";
 import SimpleSelect from "./components/InputsDemo";
 import DataTree from "./components/DataTree";
+import TableDemo from "./components/TableDemo";
 
 function App() {
   const useStyles = makeStyles((theme) => ({
@@ -41,8 +42,9 @@ function App() {
           <Route path="/calculadora" component={CalculadoraInflacionContable} />
           <Route path="/inputsdemo" component={SimpleSelect} />
           <Route path="/dataTree" component={DataTree} />
+          <Route path="/tabla1" component={TableDemo} />
           
-        </Container>
+        </Container> 
       </main>
       <Footer></Footer>
     </Router>
