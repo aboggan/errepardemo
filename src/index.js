@@ -1,11 +1,11 @@
+import { createMuiTheme } from '@material-ui/core';
+import { esES } from '@material-ui/data-grid';
+import { ThemeProvider } from '@material-ui/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core';
-
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -15,7 +15,7 @@ const theme = createMuiTheme({
       main: '#575757'
     }
   }
-})
+}, esES)
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,4 +1,3 @@
-import Button from "@material-ui/core/Button";
 import {
   ButtonGroup,
   Grid,
@@ -6,8 +5,9 @@ import {
   Link,
   makeStyles,
   Menu,
-  MenuItem,
+  MenuItem
 } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import React, { useEffect, useState } from "react";
 
 function Navigation() {
@@ -22,7 +22,7 @@ function Navigation() {
 
   const searchItem = async () => {
     setLoading(true);
-    const fetchItem = await fetch(`/api/hello`);
+    const fetchItem = await fetch(`https://next-mysql-olive.vercel.app/api/hello`);
     const item = await fetchItem.json();
     setMenuValues(item);
     setLoading(false);

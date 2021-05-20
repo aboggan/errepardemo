@@ -1,9 +1,8 @@
-import React from "react";
+import { makeStyles } from "@material-ui/core";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
-import { Link as RouterLink } from "react-router-dom";
-import { Route } from "react-router-dom";
-import { Container, makeStyles } from "@material-ui/core";
+import React from "react";
+import { Link as RouterLink, Route } from "react-router-dom";
 
 function BreadcrumbCustom() {
 
@@ -24,7 +23,7 @@ function BreadcrumbCustom() {
         return pathnames.length === 0 ? (
           ""
         ) : (
-          <Container maxWidth="md">
+          
             <Breadcrumbs aria-label="Breadcrumb" className={classes.container}>
               <RouterLink color="primary" to="/"> 
                 Inicio
@@ -50,7 +49,7 @@ function BreadcrumbCustom() {
               })}
             </Breadcrumbs>
 
-          </Container>
+          
         );
       }}
     </Route>

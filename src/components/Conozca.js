@@ -1,5 +1,6 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
+import TextEditor from "./TextEditor";
 
 function Conozca() {
   return (
@@ -24,6 +25,7 @@ function Conozca() {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </Typography>
+      <TextEditor></TextEditor>
     </>
   );
 }
