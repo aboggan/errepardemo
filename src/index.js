@@ -5,7 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Footer from './components/Footer';
-import StickyFooter from './components/StickyFooter';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 const theme = createMuiTheme({

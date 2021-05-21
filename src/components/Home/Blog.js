@@ -1,21 +1,12 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Divider } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import FeaturedPost from './FeaturedPost';
 import Header from './Header';
 import MainFeaturedPost from './MainFeaturedPost';
-import FeaturedPost from './FeaturedPost';
-import Main from './Main';
-import Sidebar from './Sidebar';
-import Footer from './Footer';
-import post1 from './blog-post.1.md';
-import post2 from './blog-post.2.md';
-import post3 from './blog-post.3.md';
-import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -64,9 +55,9 @@ const featuredPosts = [
   },
 ];
 
-const posts = [post1, post2, post3];
+//const posts = [post1, post2, post3];
 
-const sidebar = {
+/*const sidebar = {
   title: 'About',
   description:
     'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
@@ -88,7 +79,7 @@ const sidebar = {
     { name: 'Twitter', icon: TwitterIcon },
     { name: 'Facebook', icon: FacebookIcon },
   ],
-};
+};*/
 
 export default function Blog() {
   const classes = useStyles();

@@ -12,6 +12,8 @@ export const fakeAuth = {
     },
     signout(cb) {
         sessionStorage.setItem("isLogged", false)
+        sessionStorage.setItem("username", "")
+        sessionStorage.setItem("userPhoto", "")
         this.isAuthenticated = false
         setTimeout(cb, 100)
     }
