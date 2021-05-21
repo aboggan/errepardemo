@@ -13,6 +13,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { fakeAuth } from "./../utils/fakeAuth";
+import { Redirect, useLocation } from 'react-router';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -60,6 +63,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+  const [redirectToReferrer, setRedirectToReferrer] = React.useState(false)
+  const { state } = useLocation()
+
+
+  console.log(state?.from)
+
+  const login = () => {
+    
+    
+    fakeAuth.authenticate()
+    setRedirectToReferrer(true)
+  }
+  
+  if (redirectToReferrer === true) {
+    return <Redirect to={state?.from || '/'} />
+  }
+
+  /*if (fakeAuth.isAuthenticated === "true" || fakeAuth.isAuthenticated === true) {
+    return <Redirect to={state?.from || '/'} />
+  }*/
+
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -73,7 +97,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Entrar a Mi Estudio
           </Typography>
-          <form className={classes.form} noValidate>
+          <div className={classes.form} >
             <TextField
               variant="outlined"
               margin="normal"
@@ -101,11 +125,12 @@ export default function SignInSide() {
               label="Recordarme en este equipo"
             />
             <Button
-              type="submit"
+              type="button"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={login}
             >
               Entrar
             </Button>
@@ -124,7 +149,7 @@ export default function SignInSide() {
             <Box mt={5}>
               <Copyright />
             </Box>
-          </form>
+          </div>
         </div>
       </Grid>
     </Grid>
