@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
+import Pricing from '../Pricing';
 import FeaturedPost from './FeaturedPost';
 import Header from './Header';
 import MainFeaturedPost from './MainFeaturedPost';
@@ -99,6 +100,7 @@ export default function Blog() {
           <Grid container spacing={5} className={classes.mainGrid}>
            <Divider></Divider>
           </Grid>
+          <Pricing />
           <br/><br/><br/>
         </main>
       </Container>

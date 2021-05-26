@@ -83,7 +83,7 @@ export default function SignInSide({ location }) {
 
 
   const responseGoogle = (response) => {
-    console.log("googl",response.profileObj);
+    console.log("googl",response);
     const user = {
       name: response.profileObj.name,
       userPhoto: response.profileObj.imageUrl

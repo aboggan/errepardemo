@@ -183,7 +183,7 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
       <Drawer
-        variant="permanent"
+        
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
