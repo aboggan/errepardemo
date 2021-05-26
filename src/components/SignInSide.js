@@ -1,5 +1,4 @@
 import Avatar from "@material-ui/core/Avatar";
-import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,27 +11,16 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React from "react";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import GoogleLogin from "react-google-login";
+import { FaFacebook } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { Redirect, useLocation } from "react-router";
 import { fakeAuth } from "./../utils/fakeAuth";
 import { userOnSession } from "./../utils/userOnSession";
 
 
 
-
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,6 +54,13 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  socialButton: {
+    paddingRight: 15,
+    paddingLeft: 15,
+  },
+  facebokIcon: {
+    color: "#1877f2"
+  }
 }));
 
 export default function SignInSide({ location }) {
@@ -73,16 +68,36 @@ export default function SignInSide({ location }) {
   const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
   const { state } = useLocation();
 
-  //const history = useHistory();
+  const responseFacebook = (response) => {
+    console.log("face", response);
+    ///*if (response.status === undefined) return;
+    if( Object.keys(response).length <= 1  || response.error!== undefined) return;
+    const user = {
+      name: response.name,
+      userPhoto: response.picture.data.url
+    }
+    login(user)
 
-  const responseGoogle = (response) => {
-    console.log(response.profileObj);
-    userOnSession.logIn(response.profileObj);
-    login()
+    
   };
 
-  const login = () => {
+
+  const responseGoogle = (response) => {
+    console.log("googl",response.profileObj);
+    const user = {
+      name: response.profileObj.name,
+      userPhoto: response.profileObj.imageUrl
+    }
+
+    login(user);
+  };
+  const responseGoogleFailure = (response) => {
+    console.log(response.profileObj);
+  };
+  const login = (user) => {
+    userOnSession.logIn(user);
     fakeAuth.authenticate(() => {
+      
       setRedirectToReferrer(true);
     });
   };
@@ -91,7 +106,7 @@ export default function SignInSide({ location }) {
     return <Redirect to={state?.from || "/dashboard"} />;
   }
 
-  if (fakeAuth.isAuthenticated === true) {
+  if (sessionStorage.getItem("isLogged") === "true") {
     return <Redirect to={state?.from || "/dashboard"} />;
   }
 
@@ -105,16 +120,52 @@ export default function SignInSide({ location }) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5" gutterBottom={true}>
-            Entrar a Mi Estudio
+            Inciar sesión
           </Typography>
           <div className={classes.form}>
-            <GoogleLogin
-              clientId="774569882947-oudtho13kck7b4fn3ottik2kr2do3t15.apps.googleusercontent.com"
-              buttonText="Entrar con cuenta de Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            />
+            <Grid container>
+              <Grid item md={6} xs={12}>
+                <GoogleLogin
+                  clientId="774569882947-oudtho13kck7b4fn3ottik2kr2do3t15.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <Button
+                      className={classes.socialButton}
+                      fullWidth={true}
+                      variant="text"
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                      startIcon={<FcGoogle />}
+                    >
+                      Entrar con Google
+                    </Button>
+                  )}
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogleFailure}
+                  cookiePolicy={"single_host_origin"}
+                />
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <FacebookLogin
+                  appId="556456215340942"
+                  
+                  fields="name,email,picture"
+                  callback={responseFacebook}
+                  
+                  render={(renderProps) => (
+                    <Button
+                      className={classes.socialButton}
+                      fullWidth={true}
+                      variant="text"
+                      onClick={renderProps.onClick}
+                      startIcon={<FaFacebook className={classes.facebokIcon}/>}
+                    >
+                      Entrar con Facebook
+                    </Button>
+                  )}
+                />
+              </Grid>
+            </Grid>
             <TextField
               variant="outlined"
               margin="normal"
@@ -150,7 +201,7 @@ export default function SignInSide({ location }) {
               onClick={login}
               disabled={true}
             >
-              Entrar
+              Ingresar a Mi Estudio
             </Button>
             <Grid container>
               <Grid item xs>
@@ -164,9 +215,6 @@ export default function SignInSide({ location }) {
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
           </div>
         </div>
       </Grid>

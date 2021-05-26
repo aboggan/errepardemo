@@ -1,14 +1,12 @@
 import AppBar from "@material-ui/core/AppBar";
 import Avatar from "@material-ui/core/Avatar";
 import Badge from "@material-ui/core/Badge";
-import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
-import Link from "@material-ui/core/Link";
 import List from "@material-ui/core/List";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,18 +24,6 @@ import Chart from "./Chart";
 import Deposits from "./Deposits";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Orders from "./Orders";
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const drawerWidth = 240;
 
@@ -121,6 +107,9 @@ const useStyles = makeStyles((theme) => ({
   avatarContainer: {
     maxWidth: 100,
   },
+  userName: {
+    paddingLeft: 12
+  }
 }));
 
 export default function Dashboard() {
@@ -142,6 +131,8 @@ export default function Dashboard() {
   const history = useHistory();
 
   const logout = ()=>{
+   
+    window.FB.logout()
     fakeAuth.signout()
     history.push("/")
   }
@@ -183,7 +174,7 @@ export default function Dashboard() {
 
           <IconButton color="inherit">
             <Avatar alt={user.name} src={user.image} />
-            <Typography> {user.name}</Typography>
+            <Typography className={classes.userName}> {user.name}</Typography>
           </IconButton>
 
           <IconButton color="inherit" onClick={logout}>
@@ -231,9 +222,6 @@ export default function Dashboard() {
               </Paper>
             </Grid>
           </Grid>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
         </Container>
       </main>
     </div>

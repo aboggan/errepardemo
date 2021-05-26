@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import Dashboard from "./components/Dashboard/Dashboard";
 import Blog from "./components/Home/Blog";
-import MobileMenu from "./components/MobileMenu";
 import SignInSide from "./components/SignInSide";
 import TableDemo from "./components/TableDemo";
 
@@ -30,10 +29,6 @@ function App() {
 
   return (
     <Router>
-      <header>
-        <MobileMenu></MobileMenu>
-
-      </header>
       <main>
         <Route path="/" exact component={Blog}></Route>
         <Route path="/login">
