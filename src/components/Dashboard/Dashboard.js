@@ -19,6 +19,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import clsx from "clsx";
 import React from "react";
 import { useHistory } from "react-router-dom";
+import Chat from "../Chat";
 import { fakeAuth } from "./../../utils/fakeAuth";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
@@ -224,6 +225,7 @@ export default function Dashboard() {
           </Grid>
         </Container>
       </main>
+      <Chat></Chat>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Footer from './components/Footer';
+//import Footer from './components/Footer';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 const theme = createMuiTheme({
@@ -27,14 +27,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Footer />
-    </ThemeProvider>
-  </React.StrictMode>,
-  document.getElementById('footer')
-);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
