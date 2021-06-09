@@ -3,10 +3,14 @@ import { esES } from '@material-ui/data-grid';
 import { ThemeProvider } from '@material-ui/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './App';
 //import Footer from './components/Footer';
 import './index.css';
+import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
+
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -21,7 +25,10 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <Provider store={store}>
+        <App />
+
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
