@@ -19,8 +19,9 @@ import { Redirect, useLocation } from "react-router";
 import { fakeAuth } from "./../utils/fakeAuth";
 import { userOnSession } from "./../utils/userOnSession";
 
+import { useDispatch } from 'react-redux';
 
-
+import {logIn} from '../redux/actions/userActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,6 +68,7 @@ export default function SignInSide({ location }) {
   const classes = useStyles();
   const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
   const { state } = useLocation();
+  const dispatch= useDispatch()
 
   const responseFacebook = (response) => {
     console.log("face", response);
@@ -96,6 +98,7 @@ export default function SignInSide({ location }) {
   };
   const login = (user) => {
     userOnSession.logIn(user);
+    dispatch(logIn(user))
     fakeAuth.authenticate(() => {
       
       setRedirectToReferrer(true);
