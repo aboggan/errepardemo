@@ -1,3 +1,4 @@
+import { Link } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Avatar from "@material-ui/core/Avatar";
 import Badge from "@material-ui/core/Badge";
@@ -14,14 +15,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import clsx from "clsx";
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { fakeAuth } from "./../../utils/fakeAuth";
 import MainMenu from "./MainMenu";
 
-import { Link, List } from "@material-ui/core";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 
 const drawerWidth = 240;
 
@@ -125,7 +121,6 @@ function Header() {
     name: sessionStorage.getItem("username"),
   };
 
-  const history = useHistory();
 
   const logout = () => {
     //window.FB.logout();
