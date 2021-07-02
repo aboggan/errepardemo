@@ -5,6 +5,7 @@ import Blog from "../components/Home/Blog";
 import SignInSide from "../components/SignInSide";
 import TableDemo from "../components/TableDemo";
 import Costumers from "../components/Widgets/Costumers";
+import Main from "../pages/Main";
 
 function PrivateRoute({ children, ...rest }) {
   return (
@@ -29,6 +30,7 @@ function PrivateRoute({ children, ...rest }) {
 const routes = (
   <>
     <Route path="/" exact component={Blog}></Route>
+    <Route path="/main" exact component={Main}></Route>
     <Route path="/login">
       <SignInSide />
     </Route>
