@@ -18,6 +18,11 @@ import { useHistory } from "react-router-dom";
 import { fakeAuth } from "./../../utils/fakeAuth";
 import MainMenu from "./MainMenu";
 
+import { Link, List } from "@material-ui/core";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -125,7 +130,7 @@ function Header() {
   const logout = () => {
     //window.FB.logout();
     fakeAuth.signout();
-    history.push("/");
+    //history.push("/");
   };
 
   return (
@@ -168,9 +173,11 @@ function Header() {
             <Typography className={classes.userName}> {user.name}</Typography>
           </IconButton>
 
-          <IconButton color="inherit" onClick={logout}>
-            <ExitToAppSharp></ExitToAppSharp>
-          </IconButton>
+          <Link href="/" color="inherit" underline="none">
+            <IconButton color="inherit" onClick={logout}>
+              <ExitToAppSharp></ExitToAppSharp>
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -188,7 +195,6 @@ function Header() {
         <Divider />
 
         <MainMenu />
-
 
         <Divider />
       </Drawer>
