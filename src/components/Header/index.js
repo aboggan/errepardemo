@@ -5,7 +5,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -17,7 +16,6 @@ import clsx from "clsx";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { fakeAuth } from "./../../utils/fakeAuth";
-import { secondaryListItems } from "./listItems";
 import MainMenu from "./MainMenu";
 
 const drawerWidth = 240;
@@ -157,7 +155,7 @@ function Header() {
             noWrap
             className={classes.title}
           >
-            Dashboard
+            Mi Estudio
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -193,7 +191,6 @@ function Header() {
 
 
         <Divider />
-        <List>{secondaryListItems}</List>
       </Drawer>
     </>
   );

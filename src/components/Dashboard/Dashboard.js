@@ -7,7 +7,6 @@ import WidgetList from "../WidgetList";
 import Costumers from "../Widgets/Costumers";
 
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",

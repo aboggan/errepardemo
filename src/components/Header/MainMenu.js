@@ -10,7 +10,17 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React from "react";
 
 export default function MainMenu() {
+  
 
+
+  /*const goto = (e) => {
+    console.log("pressed", e);
+    history.push("/dashboard/costumers");
+  };*/
+
+  /*useEffect(() => {
+    goto(page);
+  }, [page]);*/
 
 
   const mainListItems = (
@@ -20,7 +30,7 @@ export default function MainMenu() {
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
-        <ListItemText primary="Dashboard" />
+        <ListItemText primary="Bandeja de entrada" />
       </ListItem>
 
       </Link>
@@ -28,27 +38,27 @@ export default function MainMenu() {
         <ListItemIcon>
           <ShoppingCartIcon />
         </ListItemIcon>
-        <ListItemText primary="Orders" />
+        <ListItemText primary="Chats" />
       </ListItem>
       <Link href="/dashboard/costumers" color="inherit" underline="none">
         <ListItem button>
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary="Customers" />
+          <ListItemText primary="Gestor Documentos" />
         </ListItem>
       </Link>
       <ListItem button>
         <ListItemIcon>
           <BarChartIcon />
         </ListItemIcon>
-        <ListItemText primary="Reports" />
+        <ListItemText primary="Editar Web" />
       </ListItem>
       <ListItem button>
         <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>
-        <ListItemText primary="Integrations" />
+        <ListItemText primary="Herramientas" />
       </ListItem>
     </div>
   );
